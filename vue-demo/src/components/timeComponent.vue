@@ -1,7 +1,8 @@
 <template>
 	<div>
 		<h3>{{nowTime}}  <titles></titles>  </h3>
-		
+		<router-link id="login" :to="{path:'login'}">login</router-link>
+		<router-link id="home" :to="{path:'/'}">home</router-link>
 	</div>
 </template>
 

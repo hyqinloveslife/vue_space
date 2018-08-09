@@ -12,7 +12,8 @@
 		</ul>
 		<div>
 			<button v-on:click="addFruits()" value="新增水果">新增水果</button>
-			<button v-on:click="intoVagetable()">进入蔬菜专区</button>
+			<button v-on:click="intoVagetable(2)">{{fruitType}}</button>
+			<button v-on:click="intoVagetable(3)">{{fruitType2}}</button>
 		</div>
 	</div>
 </template>
@@ -28,7 +29,9 @@
 						{msg:'香蕉',price:18.8},
 						{msg:'葡萄',price:20.8}
 					]
-				}
+				},
+				fruitType:'蔬菜专区',
+				fruitType2:'咸菜专区'
 				
 			}
 		},
@@ -57,9 +60,14 @@
 				// console.log(randomValue);
 				return fruits[randomValue];
 			},
-			intoVagetable(){
-				console.log(1);
-				this.$router.push('./login');
+			intoVagetable(param){
+				console.log(param);
+				if(param=='2'){
+					this.$router.push('./login');
+				}else if(param=='3'){
+					this.$router.push('./time');
+				}
+				
 			}
 		},
 	}

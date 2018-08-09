@@ -13,8 +13,7 @@
 		<p class="beRed" v-bind:class="classType">{{fullname}}</p>
 	</div>
 	<div v-else>
-		<Times></Times>
-		<p>今日份水果的价格</p>
+		<!-- <Times></Times> -->
 		<!-- <fruits></fruits> -->
 		<router-view></router-view>
 	</div>
