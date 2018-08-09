@@ -12,6 +12,7 @@
 		</ul>
 		<div>
 			<button v-on:click="addFruits()" value="新增水果">新增水果</button>
+			<button v-on:click="intoVagetable()">进入蔬菜专区</button>
 		</div>
 	</div>
 </template>
@@ -55,7 +56,10 @@
 				let randomValue = parseInt(Math.random()*fruits.length);
 				// console.log(randomValue);
 				return fruits[randomValue];
-				
+			},
+			intoVagetable(){
+				console.log(1);
+				this.$router.push('./login');
 			}
 		},
 	}

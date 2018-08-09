@@ -1,5 +1,5 @@
 <template>
-    <span>
+    <span v-bind:class="titleStyle">
         {{title}}
     </span>
 </template>
@@ -10,12 +10,21 @@
         name: 'titles',
         data() {
             return {
-                title: '这是我的标题'
+                title: '司徒雷登的水果店',
+				titleStyle:{
+					isBig:true,
+					isRed:true
+				}
             }
         },
     }
 </script>
 
 <style>
-
+	.isBig{
+		font-size: 24px;
+	}
+	.isRed{
+		color: red;
+	}
 </style>

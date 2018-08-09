@@ -13,8 +13,10 @@
 		<p class="beRed" v-bind:class="classType">{{fullname}}</p>
 	</div>
 	<div v-else>
+		<Times></Times>
 		<p>今日份水果的价格</p>
-		<fruits></fruits>
+		<!-- <fruits></fruits> -->
+		<router-view></router-view>
 	</div>
 	
 </template>
@@ -22,6 +24,9 @@
 <script>
 	import fruits from './elements/fruit.vue'
 	import Times from './timeComponent.vue'
+	
+	import Vue from 'vue'
+	import VueRouter from 'vue-router'
 	
     export default {
         name: 'HelloWorld',
@@ -71,7 +76,7 @@
 		},
 		components: {
 			fruits,
-			times
+			Times
 		}
     }
 	
