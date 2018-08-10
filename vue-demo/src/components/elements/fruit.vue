@@ -1,5 +1,5 @@
-<template>
-	<div>
+<template style="overflow-y: visible;">
+	<div class="container">
 		<h5>欢迎光临司徒雷登水果店,这里有全世界最绿色最新鲜最优惠的水果</h5>
 		<ul>
 			<li v-for="(element,index) in data.items">
@@ -78,6 +78,12 @@
 	
 </script>
 <style>
+	body{
+		overflow-y: visible;
+	}
+	.container{
+		margin-bottom: 50px;
+	}
 	ul{
 		list-style: none;
 	}

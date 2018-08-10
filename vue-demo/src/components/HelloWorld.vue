@@ -13,19 +13,27 @@
 		<p class="beRed" v-bind:class="classType">{{fullname}}</p>
 	</div>
 	<div v-else>
+		<headers></headers>
 		<!-- <Times></Times> -->
 		<!-- <fruits></fruits> -->
-		<router-view></router-view>
+		<keep-alive>
+			<router-view></router-view>
+		</keep-alive>
+		<bottoms></bottoms>
 	</div>
 	
 </template>
 
 <script>
-	import fruits from './elements/fruit.vue'
-	import Times from './timeComponent.vue'
-	
 	import Vue from 'vue'
 	import VueRouter from 'vue-router'
+	
+	import headers from './elements/header.vue'
+	import fruits from './elements/fruit.vue'
+	import Times from './timeComponent.vue'
+	import bottoms from './elements/bottom.vue'
+	
+	
 	
     export default {
         name: 'HelloWorld',
@@ -75,7 +83,9 @@
 		},
 		components: {
 			fruits,
-			Times
+			Times,
+			headers,
+			bottoms,
 		}
     }
 	
