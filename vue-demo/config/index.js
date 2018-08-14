@@ -6,7 +6,25 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
+		//设置vue开发环境的跨域问题
+		proxyTable: {
+	
+			'/api': {
+	
+				target: 'http://news-at.zhihu.com/api/4/news',
+	
+				changeOrigin: true,
+	
+				pathRewrite: {
+	
+					'^/api': '/api'
+	
+				}
+	
+			}
+	
+		},
+	
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

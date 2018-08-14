@@ -1,19 +1,12 @@
 <template>
-	<div class="bottom">
-		<div class="btn" v-bind:class="btnStyle" v-for="(item,index) in banners" @click="goto(index)">
-			<div><img :src="item.imgUrl" /></div> 
-			<div><router-link :to="{path:item.toPath}" > {{item.text}} </router-link></div> 
+	<div>
+		<div class="blank"></div>
+		<div class="bottom">
+			<div class="btn" v-bind:class="btnStyle" v-for="(item,index) in banners" @click="goto(index)">
+				<div><img :src="item.imgUrl" /></div> 
+				<div><router-link :to="{path:item.toPath}" > {{item.text}} </router-link></div> 
+			</div>
 		</div>
-		<!-- <div class="btn">
-			<router-link :to="{path:'/'}">想法</router-link>
-		</div>
-		<div class="btn">
-			<router-link :to="{path:'/'}">通知</router-link>
-		</div>
-		<div class="btn">
-			<router-link :to="{path:'/'}">我的</router-link>
-		</div> -->
-		
 	</div>
 </template>
 
@@ -30,9 +23,9 @@
 			return {
 				banners:[
 					{imgUrl:shouye1,text:'首页',bannerClass:'',toPath:'/login'},
-					{imgUrl:dianhua1,text:'想法',bannerClass:'',toPath:'/'},
-					{imgUrl:gouwuche1,text:'通知',bannerClass:'',toPath:'/'},
-					{imgUrl:person1,text:'我的',bannerClass:'',toPath:'/'}
+					{imgUrl:dianhua1,text:'文章',bannerClass:'',toPath:'/zhihu'},
+					{imgUrl:gouwuche1,text:'通知',bannerClass:'',toPath:'/fruits'},
+					{imgUrl:person1,text:'我的',bannerClass:'',toPath:'/time'}
 				],
 				btnStyle:{
 					active:true
@@ -42,7 +35,7 @@
 		},
 		methods: {
 			goto(index) {
-				alert(index);
+				
 				
 			}
 		},
@@ -65,7 +58,7 @@
 		bottom: 0;
 		left: 0;
 		position: fixed;
-		margin-bottom:0 0 5px 0;
+		margin-bottom:50px 0 5px 0;
 		height: 50px;
 		line-height: 25px;
 		width: 100%;
@@ -84,5 +77,11 @@
 	}
 	.active{
 		color: beige;
+	}
+	.blank {
+		clear: both;
+		overflow: hidden;
+		display: block;
+		height: 50px;
 	}
 </style>

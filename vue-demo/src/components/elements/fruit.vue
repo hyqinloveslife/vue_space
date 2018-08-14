@@ -70,6 +70,9 @@
 				
 			}
 		},
+		created:function(){
+			console.log(this.$route.query.name);
+		}
 	}
 	
 	
