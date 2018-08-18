@@ -4,19 +4,45 @@
 			{{title}}
 		</p> -->
 		<!--显示内容的区域 -->
-		<div class="views" v-for="(item,index) in list" @click="readTitle(item.id)">
+		<!--文档结构-->
+
+		<div id="box">
+
+			<ul>
+
+				<li><router-link :to="{path:'/zhihu/firstpage'}">首页</router-link></li>
+
+				<li><router-link :to="{path:'/zhihu/newspage'}">新闻</router-link></li>
+
+				<li><router-link :to="{path:'/zhihu/articles',query:{id:'9693134'}}">个人中心</router-link></li>
+
+				<div class="clear"></div>
+
+			</ul>
+
+
+		</div>
+		
+		<!-- <div class="views" v-for="(item,index) in list" @click="readTitle(item.id)">
 			<div class="view-left">
 				<img :src="img" v-for="img in item.images" class="artileLogo">
 			</div>
 			<div class="view-right">
-				<p>{{item.title}}</p>
+				<router-link :to="{path:'/zhihu/articles',query:{id:item.id}}"> <p>{{item.title}}</p> </router-link>
 			</div>
-		</div>
+		</div> -->
 		
+		
+		<div class="show">
+
+			<router-view></router-view>
+
+		</div>
 	</div>
 </template>
 
 <script>
+	
 	export default {
 		name: 'titles',
 		data() {
@@ -27,11 +53,13 @@
 					isRed:true
 				},
 				list:''
+				
+				
 			}
 		},
 		created:function(){
 			console.log('oppo R15 照亮你的美');
-			this.$http.get('http://162.168.2.103:8080/testSSM/zhihu/zhihuList.do').then(function(res){//静态资源文件要放在static目录下面，不然会默认请求vue文件
+			this.$http.get('http://162.168.2.101:8080/testSSM/zhihu/zhihuList.do').then(function(res){//静态资源文件要放在static目录下面，不然会默认请求vue文件
 				console.log(res.data.data);
 				let _data = res.data.data;
 				this.list = _data.stories;
@@ -42,12 +70,12 @@
 		methods: {
 			readTitle(value){
 				console.log("id = "+value);
-				this.$router.push({
-					path:'/articles',
-					query:{
-						id:value
-					}
-				});
+// 				this.$router.push({
+// 					path:'/articles',
+// 					query:{
+// 						id:value
+// 					}
+// 				});
 			}
 		},
 	}
@@ -77,4 +105,13 @@
 	.views .view-right{
 		flex: 8;
 	}
+	li{list-style: none;float: left;margin: 10px 20px;}
+
+	a{text-decoration: none;}
+
+	a:hover{cursor: pointer;}
+
+	/* .show{width: 300px;height: 300px;background: #ccc;float: left;margin: 20px 0px;} */
+
+	.clear{clear: both;}
 </style>

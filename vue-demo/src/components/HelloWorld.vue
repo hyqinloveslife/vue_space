@@ -16,9 +16,9 @@
 		<headers></headers>
 		<!-- <Times></Times> -->
 		<!-- <fruits></fruits> -->
-		<keep-alive>
+		<div id="show">
 			<router-view></router-view>
-		</keep-alive>
+		</div>
 		<bottoms></bottoms>
 	</div>
 	
