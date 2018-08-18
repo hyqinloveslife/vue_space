@@ -2,9 +2,10 @@
 	<div>
 		<div class="blank"></div>
 		<div class="bottom">
-			<div class="btn" v-bind:class="btnStyle" v-for="(item,index) in banners" @click="goto(index)">
-				<div><img :src="item.imgUrl" /></div> 
-				<div><router-link :to="{path:item.toPath}" > {{item.text}} </router-link></div> 
+			<div class="btn" :class="{active:istrue===index}" v-for="(item,index) in banners" @click="istrue=index;goto(item.toPath)">
+				<div><img class="bottom-img" :src="item.imgUrl" /></div> 
+				<!-- <div><router-link :to="{path:item.toPath}" > {{item.text}} </router-link></div> -->
+				<div>{{item.text}}</div>
 			</div>
 		</div>
 	</div>
@@ -12,31 +13,32 @@
 
 <script>
 	
-	import shouye1 from '../../resource/home/shouye.png'
-	import dianhua1 from '../../resource/home/1dianhua.png'
-	import gouwuche1 from '../../resource/home/1gouwuche.png'
-	import person1 from '../../resource/home/1wode.png'
+// 	import shouye1 from '../../resource/home/shouye.png'
+// 	import dianhua1 from '../../resource/home/1dianhua.png'
+// 	import gouwuche1 from '../../resource/home/1gouwuche.png'
+// 	import person1 from '../../resource/home/1wode.png'
 	
 	export default{
 		name:'bottoms',
 		data() {
 			return {
 				banners:[
-					{imgUrl:shouye1,text:'首页',bannerClass:'',toPath:'/login'},
-					{imgUrl:dianhua1,text:'文章',bannerClass:'',toPath:'/zhihu'},
-					{imgUrl:gouwuche1,text:'通知',bannerClass:'',toPath:'/fruits'},
-					{imgUrl:person1,text:'我的',bannerClass:'',toPath:'/time'}
+					{imgUrl:'../../../static/image/home/shouye.png',text:'首页',bannerClass:'',toPath:'/login'},
+					{imgUrl:'../../../static/image/home/1dianhua.png',text:'文章',bannerClass:'',toPath:'/zhihu'},
+					{imgUrl:'../../../static/image/home/1gouwuche.png',text:'通知',bannerClass:'',toPath:'/fruits'},
+					{imgUrl:'../../../static/image/home/1wode.png',text:'我的',bannerClass:'',toPath:'/time'}
 				],
 				btnStyle:{
-					active:true
+					//active:true
 				},
+				istrue:0,
 				homeIcon:'../../resource/home/shouye.png'
 			}
 		},
 		methods: {
-			goto(index) {
-				
-				
+			goto(_path) {
+				console.log(_path);
+				this.$router.push({path:_path});
 			}
 		},
 	}
@@ -47,9 +49,9 @@
 	
 	a{
 		text-decoration: none;
-		color: black;
+		
 	}
-	img{
+	.bottom-img {
 		width: 15px;
 		height: 15px;
 	}
@@ -76,7 +78,7 @@
 		font-size: 13px;
 	}
 	.active{
-		color: beige;
+		color:  #00BFFF;
 	}
 	.blank {
 		clear: both;

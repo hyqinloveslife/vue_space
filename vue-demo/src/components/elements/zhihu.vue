@@ -8,13 +8,13 @@
 
 		<div id="box">
 
-			<ul>
+			<ul >
 
-				<li><router-link :to="{path:'/zhihu/firstpage'}">首页</router-link></li>
+				<li id="tab1" @click="isSelect=0" :class="{isActive:isSelect==0}"><router-link :to="{path:'/zhihu/firstpage'}">首页</router-link></li>
 
-				<li><router-link :to="{path:'/zhihu/newspage'}">新闻</router-link></li>
+				<li id="tab2" @click="isSelect=1" :class="{isActive:isSelect==1}"><router-link :to="{path:'/zhihu/newspage'}">新闻</router-link></li>
 
-				<li><router-link :to="{path:'/zhihu/articles',query:{id:'9693134'}}">个人中心</router-link></li>
+				<li id="tab3" @click="isSelect=2" :class="{isActive:isSelect==2}"><router-link :to="{path:'/zhihu/articles',query:{id:'9693134'}}">个人中心</router-link></li>
 
 				<div class="clear"></div>
 
@@ -52,7 +52,8 @@
 					isBig:true,
 					isRed:true
 				},
-				list:''
+				list:'',
+				isSelect:0
 				
 				
 			}
@@ -76,12 +77,16 @@
 // 						id:value
 // 					}
 // 				});
+			},
+			sele(){
+				console.log(this.isSelect);
 			}
 		},
 	}
 </script>
 
 <style>
+	.isActive{background: white;border-left: deepskyblue 1px solid;border-right:  deepskyblue 1px solid;border-top: deepskyblue 1px solid;}
 	.isBig{
 		font-size: 24px;
 	}
@@ -105,7 +110,9 @@
 	.views .view-right{
 		flex: 8;
 	}
-	li{list-style: none;float: left;margin: 10px 20px;}
+	#box{background: #EEEEEE;width: 100%;}
+	ul{display: inline-flex;flex-direction: row;flex-wrap: nowrap;width: 100%;}
+	li{list-style: none;padding: 10px 20px;flex: 1;border-right: #F5F5DC 1px solid;}
 
 	a{text-decoration: none;}
 
