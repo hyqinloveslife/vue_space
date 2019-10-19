@@ -24,8 +24,8 @@
 			return {
 				banners:[
 					{imgUrl:'../../../static/image/home/shouye.png',text:'首页',bannerClass:'',toPath:'/login'},
-					{imgUrl:'../../../static/image/home/1dianhua.png',text:'文章',bannerClass:'',toPath:'/zhihu'},
-					{imgUrl:'../../../static/image/home/1gouwuche.png',text:'通知',bannerClass:'',toPath:'/fruits'},
+					{imgUrl:'../../../static/image/home/1dianhua.png',text:'书城',bannerClass:'',toPath:'/zhihu/bookshop'},
+					{imgUrl:'../../../static/image/home/1gouwuche.png',text:'购物车',bannerClass:'',toPath:'/fruits'},
 					{imgUrl:'../../../static/image/home/1wode.png',text:'我的',bannerClass:'',toPath:'/time'}
 				],
 				btnStyle:{
@@ -45,7 +45,7 @@
 	
 </script>
 
-<style>
+<style scoped="scoped">
 	
 	a{
 		text-decoration: none;

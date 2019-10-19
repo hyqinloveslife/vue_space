@@ -49,7 +49,7 @@
     }
 </script>
 
-<style>
+<style scoped>
 	.isBig{
 		font-size: 24px;
 	}

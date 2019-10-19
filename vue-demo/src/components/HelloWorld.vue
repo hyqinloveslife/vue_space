@@ -17,7 +17,9 @@
 		<!-- <Times></Times> -->
 		<!-- <fruits></fruits> -->
 		<div id="show">
-			<router-view></router-view>
+			<keep-alive>
+				<router-view></router-view>
+			</keep-alive>
 		</div>
 		<bottoms></bottoms>
 	</div>
@@ -94,6 +96,10 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+	*{
+		margin: 0;
+		padding: 0;
+	}
     h1,
     h2 {
         font-weight: normal;

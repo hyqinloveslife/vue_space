@@ -21,7 +21,7 @@
 		created:function(){
 			let params = this.$route.query.id;
 			console.log('从上个页面传来的值: '+JSON.stringify(this.$route.query));
-			this.$http.get('http://162.168.2.101:8080/testSSM/zhihu/zhihuMessageInfo.do?id='+params,).then(function(res){//静态资源文件要放在static目录下面，不然会默认请求vue文件
+			this.$http.get(global.baseURI+ '/zhihu/zhihuMessageInfo.do?id='+params,).then(function(res){//静态资源文件要放在static目录下面，不然会默认请求vue文件
 				console.log(res.data);
 				this.param = res.data.data.body;
 				
