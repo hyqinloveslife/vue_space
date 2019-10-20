@@ -1,8 +1,13 @@
 <template>
 	<el-container>
+		<el-header>
+			<el-button type="primary" @click="add">新增</el-button>
+			<el-button type="danger" @click="remove">删除</el-button>
+		</el-header>
+
 		<el-main>
 			<el-table :data="booklist" ref="multipleTable" tooltip-effect="dark" @selection-change="handleSelectionChange"
-			 border :row-class-name="tableRowClassName" style="width: 100%;" height="400">
+			 border :row-class-name="tableRowClassName" style="width: 100%;" height="500">
 				<el-table-column type="selection" width="55">
 				</el-table-column>
 				<el-table-column fixed="left" label="操作" width="100">
@@ -11,8 +16,12 @@
 						<el-button type="text" size="small">编辑</el-button>
 					</template>
 				</el-table-column>
-				<el-table-column prop="name" label="姓名" width="180"></el-table-column>
-				<el-table-column prop="description" label="简介" width="400"></el-table-column>
+				<el-table-column prop="name" label="书名" width="180"></el-table-column>
+				<el-table-column prop="author" label="作者" width="80"></el-table-column>
+				<el-table-column prop="referred" label="简介" width="500" :show-overflow-tooltip="show_overflow"></el-table-column>
+				<el-table-column prop="published" label="出版社" width="150"></el-table-column>
+				<!-- 格式化时间戳，关键是 formatter前面的冒号 :  没有就报错 -->
+				<el-table-column prop="publishDate" label="出版时间" width="100" :formatter="timeFormatter"></el-table-column>
 				<el-table-column prop="price" label="价格" width="80"></el-table-column>
 				<el-table-column prop="isbn" label="ISBN" width="200"></el-table-column>
 			</el-table>
@@ -67,11 +76,37 @@
 			},
 			handleSelectionChange(val) {
 				this.multipleSelection = val;
+			},
+			add: function() {
+
+			},
+			remove: function() {
+
+			},
+
+			timeFormatter: function(row, column, cellValue, index) {
+				/* 
+					row 表示行 
+					column 表示列
+					cellValue 表示值
+					index 表示索引，这是第几行
+				*/
+				// console.log("row : "+JSON.stringify(row));
+				// console.log("column :" + JSON.stringify(column));
+				// console.log("cellValue : "+cellValue);
+				// console.log("index : "+index);	
+
+				if (cellValue !== '') {
+					let dateArray = cellValue.split("T");
+					return dateArray[0];
+				}
+
 			}
 		},
 		data() {
 			return {
-				booklist: '',
+				show_overflow: true,
+				booklist: [],
 				multipleSelection: []
 			};
 		},
