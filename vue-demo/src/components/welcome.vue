@@ -6,7 +6,7 @@
 		</el-header>
 		<el-main>
 			<el-carousel indicator-position="outside" :interval="3000"  type="card">
-				<el-carousel-item v-for="(item,index) in images">
+				<el-carousel-item v-for="(item,index) in images" :key="key">
 					<el-image :src="item.img">
 						<div slot="placeholder" class="image-slot">
 							加载中
