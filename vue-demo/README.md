@@ -5,10 +5,10 @@
 ## Build Setup
 
 ``` bash
-# install dependencies
+# install dependencies 第一次把项目down下来的时候，是无法运行的，需要先安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:8080  启动项目
 npm run dev
 
 # build for production with minification
