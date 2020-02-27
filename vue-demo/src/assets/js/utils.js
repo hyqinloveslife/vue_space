@@ -8,6 +8,6 @@
 //设置全局变量
 global.baseURI = 'http://162.168.2.102:8080/testSSM'
 global.baseURI2 = 'http://192.168.0.103:8081/springboot'
-
+global.baseURI3 = 'http://106.53.36.106:8080/spring01'
 
 baseParameter_clientHeight = document.documentElement.clientHeight;
