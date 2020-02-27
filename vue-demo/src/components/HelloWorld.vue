@@ -2,7 +2,6 @@
     <div class="hello" v-if="seen()">
         <h1>{{ msg }}</h1>
         <h2>{{hello}}</h2>
-        <h2>翻转效果:{{reverseMsg}}</h2>
 		<p>Using mustaches:{{rawHtml}}</p>
 		<p>Using v-html directive :<span v-html="rawHtml"></span> </p>
 		<input type="text" name="in"  /><button v-bind:disabled="isButtonDisabled">Button</button>
@@ -23,20 +22,20 @@
 		</div>
 		<bottoms></bottoms>
 	</div>
-	
+
 </template>
 
 <script>
 	import Vue from 'vue'
 	import VueRouter from 'vue-router'
-	
-	import headers from './elements/header.vue'
+
+	import headers from './elements/myHeader.vue'
 	import fruits from './elements/fruit.vue'
 	import Times from './timeComponent.vue'
 	import bottoms from './elements/bottom.vue'
-	
-	
-	
+
+
+
     export default {
         name: 'HelloWorld',
         data() {
@@ -54,10 +53,6 @@
             }
         },
 		computed:{
-			reverseMsg:function(){
-				this.hello = 'goodbye'
-				return this.hello.split('').reverse().join('')
-			},
 			fullname:{
 				get:function(){
 					return this.firstName+"·"+this.lastName
@@ -90,8 +85,8 @@
 			bottoms,
 		}
     }
-	
-	
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -121,5 +116,5 @@
 	.toBig{
 		font-size: 30px;
 	}
-		
+
 </style>

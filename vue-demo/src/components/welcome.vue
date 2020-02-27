@@ -6,7 +6,7 @@
 		</el-header>
 		<el-main>
 			<el-carousel indicator-position="outside" :interval="3000"  type="card">
-				<el-carousel-item v-for="(item,index) in images" :key="key">
+				<el-carousel-item v-for="(item,index) in images" :key="(item,index)">
 					<el-image :src="item.img">
 						<div slot="placeholder" class="image-slot">
 							加载中
@@ -28,7 +28,7 @@
 				auto_height:{
 					height:(baseParameter_clientHeight-50)+"px"
 				},
-				
+
 				images: [{
 						"img": "../../../static/image/element/1.jpg"
 					},
@@ -46,14 +46,13 @@
 		},
 		methods:{
 			goback:function(){
-				console.log(1);
 				this.$router.push('/zhihu/bookshop');
 			}
 		}
 	}
 </script>
 
-<style>
+<style scoped>
 	.el-carousel__item:nth-child(2n) {
 		background-color: #99a9bf;
 	}

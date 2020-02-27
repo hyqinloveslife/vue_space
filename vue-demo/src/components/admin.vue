@@ -45,7 +45,7 @@
 						<i class="el-icon-setting"></i>
 						<span>导航4</span>
 					</template>
-					
+
 					<el-menu-item-group>
 						<template slot="title">分组4</template>
 						<el-menu-item index="1-1">选项4-1</el-menu-item>
@@ -60,12 +60,12 @@
 
 			</el-menu> -->
 			<!-- background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" -->
-			<el-menu  :default-active="activeIndex" v-bind:style="auto_height"
+			<el-menu  :default-active="activeIndex" v-bind:style="auto_height" active-text-color="#409EFF"
 			router>
 				<NavMenu :navMenus="menuData"></NavMenu>
 			</el-menu>
-			
-			
+
+
 		</el-aside>
 		<el-main>
 			<router-view></router-view>
@@ -76,7 +76,7 @@
 <script>
 	/* 在这个地方弄了很久，最后发现是路径错误 */
 	import NavMenu from './menu/NavMenu.vue'
-	
+
 	export default {
 		components: {
 			NavMenu
@@ -110,7 +110,7 @@
 			},function(err){
 				this.$message.error("请求失败");
 			});
-			
+
 			this.$router.push({
 				path:'/welcome'
 			});
@@ -118,7 +118,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	body {
 		margin: 0;
 		padding: 0;
@@ -138,7 +138,6 @@
 		/* background-color: #E9EEF3; */
 		color: #333;
 		text-align: center;
-		line-height: 160px;
 	}
 
 	.el-menu-item {}

@@ -36,16 +36,16 @@
 			{
 				"entity": {
 					"id": 2,
-					"name": "menuManage",
+					"name": "/zhihu/fruits",
 					"icon": "el-icon-edit",
-					"alias": "菜单管理",
+					"alias": "水果管理",
 					"value": "/system/menu"
 				}
 			},
 			{
 				"entity": {
 					"id": 5,
-					"name": "groupManage",
+					"name": "/zhihu/newspage",
 					"icon": "el-icon-mobile-phone\r\n",
 					"alias": "分组管理",
 					"value": "/system/group"
@@ -71,18 +71,18 @@
 				"childs": [{
 						"entity": {
 							"id": 14,
-							"name": "emailManage",
+							"name": "/titles",
 							"icon": "el-icon-sold-out\r\n",
-							"alias": "邮箱管理",
+							"alias": "標題管理",
 							"value": "/content/email"
 						}
 					},
 					{
 						"entity": {
 							"id": 13,
-							"name": "passManage",
+							"name": "/register",
 							"icon": "el-icon-service\r\n",
-							"alias": "密码管理",
+							"alias": "注冊管理",
 							"value": "/content/pass"
 						}
 					}
