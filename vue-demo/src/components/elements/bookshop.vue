@@ -3,18 +3,17 @@
     <el-page-header @back="goBack" content="權限管理">
     </el-page-header>
     <div style="float: left;margin-top: 10px;">
-      <el-button type="primary" @click="add">新增</el-button>
-      <el-button type="danger" @click="remove">删除</el-button>
+      <el-button type="primary" size="small" @click="add">新增</el-button>
+      <el-button type="danger" size="small" @click="remove">删除</el-button>
     </div>
 
     <!-- tooltip-effect="dark" @selection-change="handleSelectionChange" :row-class-name="tableRowClassName" -->
     <!-- <el-table :data="booklist" border style="width: 100%;"> -->
     <el-table ref="filterTable" :data="booklist" style="width: 100%">
-      <el-table-column type="selection" width="55"></el-table-column>
       <el-table-column fixed="left" label="操作" width="100">
         <template slot-scope="scope">
-          <el-button @click="view(scope.row)" type="text" size="small">查看</el-button>
-          <el-button type="text" size="small">编辑</el-button>
+          <el-button @click="view(scope.row,'view')" type="text" size="small">查看</el-button>
+          <el-button @click="view(scope.row,'edit')" type="text" size="small">编辑</el-button>
         </template>
       </el-table-column>
       <el-table-column prop="name" label="书名" width="180"></el-table-column>
@@ -25,30 +24,35 @@
       <el-table-column prop="publishDate" label="出版时间" width="100" :formatter="timeFormatter"></el-table-column>
       <el-table-column prop="price" label="价格" width="80"></el-table-column>
       <el-table-column prop="isbn" label="ISBN" width="200"></el-table-column>
+      <!-- 这是一个隐藏列-->
+      <el-table-column v-if="fakerValue" key="1" prop="id"></el-table-column>
     </el-table>
 
 
     <el-dialog title="书本详细" :visible.sync="dialogFormVisible">
       <el-form :model="form" label-position="left">
         <el-form-item label="书名" :label-width="formLabelWidth">
-          <el-input v-model="form.name" autocomplete="off"></el-input>
+          <el-input v-model="form.name" autocomplete="off" :disabled="editType"></el-input>
         </el-form-item>
         <el-form-item label="作者" :label-width="formLabelWidth">
-          <el-input v-model="form.author" auto-complete="off"></el-input>
+          <el-input v-model="form.author" auto-complete="off" :disabled="editType"></el-input>
         </el-form-item>
         <el-form-item label="简介" :label-width="formLabelWidth">
-          <el-input type="textarea" v-model="form.referred" auto-complete="off"></el-input>
+          <el-input type="textarea" v-model="form.referred" auto-complete="off" :disabled="editType"></el-input>
         </el-form-item>
         <el-form-item label="价格" :label-width="formLabelWidth" prop="price" :rules="pricerule">
-          <el-input v-model.trim="form.price" auto-complete="off"></el-input>
+          <el-input v-model.trim="form.price" auto-complete="off" :disabled="editType"></el-input>
         </el-form-item>
         <el-form-item label="出版日期" :label-width="formLabelWidth">
-          <el-date-picker type="date" placeholder="选择日期" v-model="form.publishDate" style="width: 100%;"></el-date-picker>
+          <el-date-picker type="date" placeholder="选择日期" v-model="form.publishDate" style="width: 100%;" :disabled="editType"></el-date-picker>
+        </el-form-item>
+        <el-form-item label="ISBN" :label-width="formLabelWidth">
+          <el-input v-model="form.isbn" auto-complete="off" :disabled="editType"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
-        <el-button type="primary" @click="submitForm('form')">确 定</el-button>
+        <el-button type="primary" @click="submitForm('form')" :disabled="editType">确 定</el-button>
       </div>
     </el-dialog>
 
@@ -79,8 +83,16 @@
         }
         return '';
       },
-      view(row) {
-        alert(row);
+      /* 查看明细 与 编辑*/
+      view(row,type) {
+        console.log(type);
+        this.form = row;
+        this.dialogFormVisible = true;
+        if(type=='edit'){
+          this.editType = false;
+        }else{
+          this.editType = true;
+        }
       },
       handleSelectionChange(val) {
         this.multipleSelection = val;
@@ -119,6 +131,10 @@
     data() {
       /* 自定义规则*/
       var priceRule = (rule,value,callback)=>{
+        if(value===undefined){
+          callback(new Error('价格不能为空'));
+          return;
+        }
         if(value.indexOf(".")!=-1){
           var behindStr = value.split('.')[1];
           if(behindStr.split(" ").join("").length>2){
@@ -137,25 +153,29 @@
       };
 
       return {
+        fakerValue:false,
         show_overflow: true,
         booklist: [],
         multipleSelection: [],
         dialogTableVisible: false,
         dialogFormVisible: false,
+        /* 设置表单是否可编辑状态  */
+        editType:false,
         form: {
           name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
+          author: '',
+          referred: '',
+          price: '',
+          publishDate: '',
+          published: '',
+          isbn: '',
+          id: ''
         },
         /* 定义表单中标签的宽度*/
         formLabelWidth: '120px',
         /* 定义价格的规则*/
         pricerule:[
+          {required:true,message:'价格不能为空',trigger:'blue'},
           {validator:priceRule,trigger:'blur'}
           /* {required:true,message:'价格不能为空',trigger:'blur'},
           {type:'number',message:'价格必须为数字',trigger:'blur'} */
