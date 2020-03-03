@@ -102,11 +102,11 @@
         this.dialogFormVisible = true;
       },
       remove: function() {
-
+        this.$message('返回！该功能还在建设中');
       },
       /* 提交表单*/
       submitForm:function(formName){
-
+        this.$message('返回！该功能还在建设中');
       },
 
       timeFormatter: function(row, column, cellValue, index) {
