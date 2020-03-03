@@ -11,6 +11,7 @@ import admin from './components/admin.vue'
 import navmenu from './components/menu/NavMenu.vue'
 import register from './components/elements/register.vue'
 
+
 //所有需要跳转的页面，难道都需要在这个js文件中注册吗？那不是很麻烦？
 
 const routers = [{

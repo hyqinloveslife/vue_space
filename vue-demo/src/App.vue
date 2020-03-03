@@ -2,8 +2,8 @@
 	<div id="app">
 		<!-- <HelloWorld/> -->
 
-		<admin />
-    <!-- <login></login> -->
+		<!-- <admin /> -->
+    <login />
 		<!-- <el-menu background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" :default-active="activeIndex"
 		 router>
 			<NavMenu :navMenus="menuData"></NavMenu>
@@ -16,7 +16,7 @@
 	import HelloWorld from './components/HelloWorld'
 	import welcome from './components/welcome.vue'
 	import admin from './components/admin.vue'
-  import login from './components/login.vue'
+  import login from '@/login/login-on.vue'
 
 	export default {
 		name: 'App',
